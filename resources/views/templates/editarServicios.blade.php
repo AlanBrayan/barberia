@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Inicio</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="{{asset('assets/css/main.css')}}" />
+
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+
+			@include ('layouts.header')
+
+			<h2>Editar Productos</h2>
+
+
+				<form action="{{ route('salvarServicios', ['id' => $usu->id_servicio]) }}" method="POST" name="nuevo3" enctype="multipart/form-data">
+
+					{{ csrf_field() }}
+					{{ method_field('PUT') }} 
+
+					<div style="padding: 1%;">
+						Nombre Del Servicio : <input type="text" name="nombre_servicio" value="{{ $usu->nombre_servicio }}">
+					</div>
+					@if($errors->first('nombre_servicio')) <i>{{$errors -> first ('nombre_servicio')}}</i>@endif
+
+
+					<div style="padding: 1%;">
+					<!-- como cambiar el tamaño -->
+						Descripcion : <input type="text" name="descripcion" value="{{ $usu->descripcion }}">
+					</div>
+					@if($errors->first('descripcion')) <i>{{$errors -> first ('descripcion')}}</i>@endif
+
+					<div style="padding: 1%;">
+						Precio : <input type="text" name="precio" value="{{ $usu->precio}}">
+					</div>
+					@if($errors->first('precio')) <i>{{$errors -> first ('precio')}}</i>@endif
+					
+					
+					<hr>
+
+					<input type="submit" value="Enviar">
+				</form>
+
+			</div>
+		</div>
+
+		@include ('layouts.menu')
+
+	</div>
+
+	@include ('layouts.footer')
+
+</body>
+
+</html>
